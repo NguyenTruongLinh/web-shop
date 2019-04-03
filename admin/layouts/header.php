@@ -8,11 +8,11 @@
       <meta name="author" content="">
       <title>SB Admin - Dashboard</title>
       <!-- Custom fonts for this template-->
-      <link href="../../../public/admin/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="<?php echo base_url() ?>public/admin/css/all.min.css" rel="stylesheet" type="text/css">
       <!-- Page level plugin CSS-->
-      <link href="../../../public/admin/css/dataTables.bootstrap4.css" rel="stylesheet">
+      <link href="<?php echo base_url() ?>public/admin/css/dataTables.bootstrap4.css" rel="stylesheet">
       <!-- Custom styles for this template-->
-      <link href="../../../public/admin/css/sb-admin.css" rel="stylesheet">
+      <link href="<?php echo base_url() ?>public/admin/css/sb-admin.css" rel="stylesheet">
    </head>
    <body id="page-top">
       <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -73,10 +73,22 @@
       <div id="wrapper">
          <!-- Sidebar -->
          <ul class="sidebar navbar-nav">
-            <li class="nav-item active">
-               <a class="nav-link" href="index.html">
+            <li class="nav-item">
+               <a class="nav-link" href="<?php echo base_url() ?>admin">
                <i class="fas fa-fw fa-tachometer-alt"></i>
-               <span>Dashboard</span>
+               <span>Bảng điều khiển</span>
+               </a>
+            </li>
+            <li class="nav-item <?php echo isset($open) && $open == 'category' ? 'active' : '' ?>">
+               <a class="nav-link" href="<?php echo modules("category") ?>">
+               <i class="fa fa-list"></i>
+               <span>Danh mục</span>
+               </a>
+            </li>
+            <li class="nav-item <?php echo isset($open) && $open == 'product' ? 'active' : '' ?>">
+               <a class="nav-link" href="<?php echo modules("product") ?>">
+               <i class="fa fa-database"></i>
+               <span>Sản phẩm</span>
                </a>
             </li>
             <li class="nav-item dropdown">

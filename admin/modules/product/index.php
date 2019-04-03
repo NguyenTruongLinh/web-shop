@@ -1,10 +1,10 @@
 
 <?php 
-   $open = "category";
+   $open = "product";
 
    require_once __DIR__. "/../../autoload/autoload.php";
 
-   $category = $db->fetchAll("category");
+   $product = $db->fetchAll("product");
 ?>
 
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>      
@@ -15,13 +15,13 @@
                   <li class="breadcrumb-item">
                      <a href="#">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Danh mục</li>
+                  <li class="breadcrumb-item active">Sản phẩm</li>
                </ol>
                <!-- Icon Cards-->
                <div class="card mb-3">
                   <div class="card-header">
                      <i class="fas fa-table"></i>
-                     Danh mục sản phẩm
+                     Sản phẩm
                      <div class="float-right">
                         <a href="add.php" class="btn btn-success"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                      </div>
@@ -41,18 +41,29 @@
                                        <tr role="row">
                                           <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">STT</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Name</th>
+                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Danh mục</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Slug</th>
-                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Created</th>
+                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Thumbnail</th>
+                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Thông tin</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody>
-                                       <?php $stt = 1; foreach ($category as $item): ?>
+                                       <?php $stt = 1; foreach ($product as $item): ?>
                                           <tr role="row" class="odd">
                                              <td class="sorting_1"><?php echo $stt ?></td>
                                              <td><?php echo $item['name'] ?></td>
+                                             <td><?php echo $item['category_id'] ?></td>
                                              <td><?php echo $item['slug'] ?></td>
-                                             <td><?php echo $item['created_at'] ?></td>
+                                             <td>
+                                             	<img src="<?php echo uploads() ?>product/<?php echo $item['thumbnail'] ?>" width="50px" height="50px">
+                                             </td>
+                                             <td>
+                                             	<ul>
+                                             		<li>Giá: <?php echo $item['price'] ?></li>
+                                             		<li>Số lượng: <?php echo $item['number'] ?></li>
+                                             	</ul>
+                                             </td>
                                              <td>
                                                 <a class="btn btn-xs btn-info" href="edit.php?id=<?php echo $item['id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
                                                 <a class="btn btn-xs btn-danger" href="delete.php?id=<?php echo $item['id'] ?>"><i class="fa fa-times"></i> Xóa</a>
