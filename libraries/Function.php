@@ -101,7 +101,7 @@
     function base_url()
     {
         // return $url  = "http://codedoan.com/"; 
-        return $url  = "http://localhost/web-shop/"; 
+        return $url  = "http://localhost:8080/web-shop/"; 
     }
 
 

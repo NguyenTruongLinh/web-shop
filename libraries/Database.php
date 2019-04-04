@@ -181,6 +181,20 @@
             return $data;
         }
 
+        public function fetch_join($table){
+            $data = [];
+            $sql = "SELECT product.*, category.name AS namecate FROM product LEFT JOIN category ON category_id = product.category_id";
+            $result = mysqli_query($this->link,$sql) or die("Lỗi Truy Vấn fetch_join " .mysqli_error($this->link));
+            if( $result)
+            {
+                while ($num = mysqli_fetch_assoc($result))
+                {
+                    $data[] = $num;
+                }
+            }
+            return $data;
+        }
+
     
         public  function fetchJones($table,$sql,$total = 1,$page,$row ,$pagi = true )
         {
