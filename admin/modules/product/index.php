@@ -6,7 +6,8 @@
 
    
 
-   $product = $db->fetch_join("product");
+   // $product = $db->fetch_join("product");
+   $product = $db->fetchAll("product");
 ?>
 
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>      
@@ -55,7 +56,7 @@
                                           <tr role="row" class="odd">
                                              <td class="sorting_1"><?php echo $stt ?></td>
                                              <td><?php echo $item['name'] ?></td>
-                                             <td><?php echo $item['namecate'] ?></td>
+                                             <td><?php echo $item['category_id'] ?></td>
                                              <td><?php echo $item['slug'] ?></td>
                                              <td>
                                              	<img src="<?php echo uploads() ?>product/<?php echo $item['thumbnail'] ?>" width="50px" height="50px">

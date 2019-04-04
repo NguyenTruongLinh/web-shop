@@ -1,15 +1,11 @@
-
 <?php 
    
    $open = "product";
-
    require_once __DIR__. "/../../autoload/autoload.php";
-
    /*
 	* Danh sách danh mục sản phẩm
    	*/
    	$category = $db->fetchAll("category");
-
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
       $data = 
@@ -21,51 +17,42 @@
          "content" => postInput('content'),
          "number" => postInput('number')
       ];
-
       $error = [];
-
       if (postInput('category_id') == '') {
          $error['category_id'] = "Vui lòng chọn tên danh mục!";
       }
-
       if (postInput('name') == '') {
          $error['name'] = "Vui lòng nhập đầy đủ tên danh mục!";
       }
-
       if (postInput('price') == '') {
          $error['price'] = "Vui lòng nhập giá sản phẩm!";
       }
-
       if (postInput('content') == '') {
          $error['content'] = "Vui lòng nhập nội dung sản phẩm!";
       }
-
       if (postInput('number') == '') {
          $error['number'] = "Vui lòng nhập số lượng sản phẩm!";
       }
-
       if (!isset($_FILES['thumbnail'])) {
       	 $error['thumbnail'] = "Vui lòng chọn hình ảnh sản phẩm!";
       }
-
-
       //Error trống có nghĩa là không có lỗi
+
       if (empty($error)) {
          if (isset($_FILES['thumbnail'])) {
-         	$file_name = $_FILES['thumbnail']['name'];
+         	$file_name = bin2hex(random_bytes(32)).'-'.pathinfo($_FILES['thumbnail']['name'], PATHINFO_BASENAME);
+
          	$file_tmp = $_FILES['thumbnail']['tmp_name'];
          	$file_type = $_FILES['thumbnail']['type'];
          	$file_error = $_FILES['thumbnail']['error'];
-
-         	if ($file_error == 0) {
-         		$part = ROOT ."product/";
-         		$data['thumbnail'] = $file_name;
-         	}
+         	
+         	$part = ROOT ."product/";
+         	$data['thumbnail'] = $file_name;
+         	move_uploaded_file($file_tmp, $part.$file_name);
          }
-
          $id_insert = $db->insert("product", $data);
          if ($id_insert) {
-         	move_uploaded_file($file_tmp, $part.$file_name);
+         	
      		$_SESSION['success'] = "Thêm mới thành công!";
         	redirectAdmin("product");
          }
@@ -75,6 +62,8 @@
          }
       }
    }
+
+
 ?>
 
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>      
@@ -166,4 +155,4 @@
 			</div>
             <!-- /.container-fluid -->
  
- <?php require_once __DIR__. "/../../layouts/footer.php"; ?>            
+ <?php require_once __DIR__. "/../../layouts/footer.php"; ?>
