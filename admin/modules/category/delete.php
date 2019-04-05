@@ -15,14 +15,21 @@
 
    //Kiểm tra xem sanh mục có SP chưa.
 
-   $num = $db->delete("category", $id);
+   $is_product = $db->fetchOne("product", "category_id = $id ");
+   if ($is_product == NULL) {
+      $num = $db->delete("category", $id);
 
-   if ($num > 0) {
-      $_SESSION['success'] = "Xóa thành công!";
-      redirectAdmin("category");
+      if ($num > 0) {
+         $_SESSION['success'] = "Xóa thành công!";
+         redirectAdmin("category");
+      }
+      else{
+         $_SESSION['error'] = "Xóa thất bại!";
+         redirectAdmin("category");
+      }
    }
    else{
-      $_SESSION['error'] = "Xóa thất bại!";
+      $_SESSION['error'] = "Danh mục đã có sản phẩm. Bạn không thể xóa!";
       redirectAdmin("category");
    }
 ?>

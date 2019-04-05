@@ -52,23 +52,31 @@
          $error['number'] = "Vui lòng nhập số lượng sản phẩm!";
       }
 
-      if (!isset($_FILES['thumbnail'])) {
-          $error['thumbnail'] = "Vui lòng chọn hình ảnh sản phẩm!";
-      }
-
       //Error trống có nghĩa là không có lỗi
       if (empty($error)) {
-         //Kiểm tra
          if (isset($_FILES['thumbnail'])) {
-            $file_name = $_FILES['thumbnail']['name'];
+            $file_name = pathinfo($_FILES['thumbnail']['name'], PATHINFO_BASENAME);
+
             $file_tmp = $_FILES['thumbnail']['tmp_name'];
             $file_type = $_FILES['thumbnail']['type'];
             $file_error = $_FILES['thumbnail']['error'];
-
+            
             if ($file_error == 0) {
                $part = ROOT ."product/";
                $data['thumbnail'] = $file_name;
             }
+            
+            
+         }
+         $update = $db->update("product", $data, array("id"=>$id));
+         if ($update > 0) {
+            move_uploaded_file($file_tmp, $part.$file_name);
+            $_SESSION['success'] = "Cập nhật thành công!";
+            redirectAdmin("product");
+         }
+         else{
+            $_SESSION['error'] = "Cập nhật thất bại!";
+            redirectAdmin("product");
          }
       }
    }
@@ -154,7 +162,7 @@
                      </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1">Nội dung</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" value="<?php echo $EditProduct['content'] ?>"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" ><?php echo $EditProduct['content'] ?></textarea>
                         <?php if (isset($error['content'])): ?>
                            <p class="text-danger"><?php echo $error['content'] ?></p>
                         <?php endif ?>

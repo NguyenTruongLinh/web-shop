@@ -40,19 +40,21 @@
 
       if (empty($error)) {
          if (isset($_FILES['thumbnail'])) {
-         	$file_name = bin2hex(random_bytes(32)).'-'.pathinfo($_FILES['thumbnail']['name'], PATHINFO_BASENAME);
+         	$file_name = pathinfo($_FILES['thumbnail']['name'], PATHINFO_BASENAME);
 
          	$file_tmp = $_FILES['thumbnail']['tmp_name'];
          	$file_type = $_FILES['thumbnail']['type'];
          	$file_error = $_FILES['thumbnail']['error'];
          	
-         	$part = ROOT ."product/";
-         	$data['thumbnail'] = $file_name;
-         	move_uploaded_file($file_tmp, $part.$file_name);
+         	if ($file_error == 0) {
+               $part = ROOT ."product/";
+               $data['thumbnail'] = $file_name;
+            }
+         	
          }
          $id_insert = $db->insert("product", $data);
          if ($id_insert) {
-         	
+         	move_uploaded_file($file_tmp, $part.$file_name);
      		$_SESSION['success'] = "Thêm mới thành công!";
         	redirectAdmin("product");
          }
@@ -75,7 +77,7 @@
 			         <a href="../../modules/index.php">Dashboard</a>
 			      </li>
 			      <li class="breadcrumb-item active">
-			         <a href="index.php">Danh mục</a>
+			         <a href="index.php">Sản phẩm</a>
 			      </li>
 			      <li class="breadcrumb-item active">Thêm mới</li>
 			   </ol>
