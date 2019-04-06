@@ -29,21 +29,26 @@
                             <div class="col-md-6">
                                 <nav id="header-nav-top">
                                     <ul class="list-inline pull-right" id="headermenu">
-                                        <li>
-                                            <a href=""><i class="fa fa-unlock"></i> Login</a>
-                                        </li>
-                                        <li>
-                                            <a href=""><i class="fa fa-user"></i> My Account <i class="fa fa-caret-down"></i></a>
-                                            <ul id="header-submenu">
-                                                <li><a href="">Contact</a></li>
-                                                <li><a href="">Cart</a></li>
-                                                <li><a href="">Checkout</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href=""><i class="fa fa-share-square-o"></i> Checkout</a>
-                                        </li>
-                                        
+                                        <?php if (isset($_SESSION['name_user'])): ?>
+                                            <li>
+                                                <a href=""><i class="fa fa-user"></i> <?php echo $_SESSION['name_user'] ?></a>
+                                                <ul id="header-submenu">
+                                                    <li><a href="">Thông tin</a></li>
+                                                    <li><a href="">Giỏ hàng</a></li>
+                                                    <li><a href="thoat.php"><i class="fa fa-share-square-o"></i> Thoát</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href=""> Checkout</a>
+                                            </li>
+                                        <?php else: ?>
+                                            <li>
+                                                <a href="dang-nhap.php"><i class="fa fa-unlock"></i> Đăng nhập</a>
+                                            </li>
+                                            <li>
+                                                <a href="dang-ky.php"><i class="fa fa-unlock"></i> Đăng ký</a>
+                                            </li>
+                                        <?php endif ?>
                                     </ul>
                                 </nav>
                             </div>

@@ -31,9 +31,9 @@
       	}
       }
 
-      if (postInput('name') == '') {
-         $error['name'] = "Vui lòng nhập đầy đủ họ tên!";
-      }
+      if (postInput('email') == '') {
+			$error['email'] = "Vui lòng nhập email!";
+		}
 
       if (postInput('phone') == '') {
          $error['phone'] = "Vui lòng nhập số điện thoại!";
@@ -48,7 +48,7 @@
       }
 
       if ($data['password'] != MD5(postInput("re-password"))) {
-         $error['password'] = "Mật khẩu không khớp!";
+         $error['re-password'] = "Mật khẩu không khớp!";
       }
       //Error trống có nghĩa là không có lỗi
 
