@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 05, 2019 lúc 06:10 PM
+-- Thời gian đã tạo: Th4 06, 2019 lúc 07:00 AM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.3.2
+-- Phiên bản PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -72,9 +72,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `slug`, `images`, `banner`, `home`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'dell update', 'dell-update', NULL, NULL, 0, 1, '2019-04-03 11:57:54', '2019-04-03 14:09:46'),
-(4, 'Macbook', NULL, NULL, NULL, 0, 1, '2019-04-03 12:29:42', '2019-04-03 12:29:42'),
-(9, 'Lenovo', 'lenovo', NULL, NULL, 0, 1, '2019-04-03 14:02:14', '2019-04-03 14:02:14');
+(1, 'Dell', 'dell', NULL, NULL, 1, 1, '2019-04-03 11:57:54', '2019-04-06 02:45:22'),
+(4, 'Macbook', NULL, NULL, NULL, 1, 1, '2019-04-03 12:29:42', '2019-04-06 02:50:04'),
+(9, 'Lenovo', 'lenovo', NULL, NULL, 0, 1, '2019-04-03 14:02:14', '2019-04-06 02:37:52');
 
 -- --------------------------------------------------------
 
@@ -104,9 +104,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `slug`, `price`, `sale`, `thumbnail`, `category_id`, `content`, `number`, `head`, `view`, `hot`, `created_at`, `updated_at`) VALUES
-(27, 'qeda2', 'qeda2', 4353, 0, '4a5ae4789f5e2532cb215ddb3c37666756a482d6016af9f45b932752247e6333-c1.jpg', 4, 'dw', 12, 0, 0, 0, '2019-04-04 17:06:27', '2019-04-05 12:11:08'),
+(27, 'qeda2', 'qeda2', 4353, 10, '4a5ae4789f5e2532cb215ddb3c37666756a482d6016af9f45b932752247e6333-c1.jpg', 4, 'dw', 12, 0, 0, 0, '2019-04-04 17:06:27', '2019-04-06 03:10:47'),
 (28, 'dw12', 'dw12', 34, 0, '6492bd77de3ebbe72c26421ee7c266beea36c5ce821fdaae903f4afc1b4e445b-c1.jpg', 1, 'aw', 2, 0, 0, 0, '2019-04-04 17:07:20', '2019-04-04 17:07:20'),
-(32, 'L141', 'l141', 234, 0, 'next.jpg', 9, 'daw', 12, 0, 0, 0, '2019-04-05 12:14:16', '2019-04-05 12:14:16');
+(32, 'L141', 'l141', 234, 0, 'next.jpg', 9, 'daw', 12, 0, 0, 0, '2019-04-05 12:14:16', '2019-04-05 12:14:16'),
+(33, 'Dell 1', 'dell-1', 234314, 10, 'house.jpg', 1, 'ada', 21, 0, 0, 0, '2019-04-06 02:44:34', '2019-04-06 03:13:00'),
+(34, 'dell 2', 'dell-2', 14123, 0, 'avatar.png', 1, 'daw', 12, 0, 0, 0, '2019-04-06 02:44:52', '2019-04-06 02:44:52'),
+(35, 'dell 3', 'dell-3', 2343, 0, 'avatar.png', 1, 'wad', 12, 0, 0, 0, '2019-04-06 02:45:11', '2019-04-06 02:45:11');
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT cho bảng `user`

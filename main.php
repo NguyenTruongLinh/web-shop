@@ -7,7 +7,7 @@
                     <div class="col-md-9 bor">
 
                         <section class="box-main1">
-                            <h3 class="title-main" style="text-align: center;"><a href="javascript:void(0)"> Máy Canong </a> </h3>
+                            <h3 class="title-main"><a href=""> Máy Canong </a> </h3>
                             
                             <!-- Nội dung -->
                         </section>

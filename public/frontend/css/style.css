@@ -364,6 +364,9 @@ h1,h2,h3,h4,h5,h6
 
 
 /* ===================MAIN CONTENT ===================== */
+.box-main{
+    overflow: hidden;
+}
 .title-main
 {
     border-bottom:2px solid #e3e3e3;
@@ -381,6 +384,7 @@ h1,h2,h3,h4,h5,h6
 }
 .showitem
 {
+    overflow: hidden;
     margin-bottom: 20px;
     margin-top:20px;
 }
@@ -417,6 +421,9 @@ h1,h2,h3,h4,h5,h6
     position: relative;
 }
 
+.item-product a{
+    display: block;
+}
 
 .hidenitem
 {

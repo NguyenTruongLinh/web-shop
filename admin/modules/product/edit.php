@@ -27,7 +27,8 @@
          "category_id" => postInput('category_id'),
          "price" => postInput('price'),
          "content" => postInput('content'),
-         "number" => postInput('number')
+         "number" => postInput('number'),
+         "sale" => postInput('sale')
       ];
 
       $error = [];

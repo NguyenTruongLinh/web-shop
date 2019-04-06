@@ -42,6 +42,7 @@
                                           <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">STT</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Name</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Slug</th>
+                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Home</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Created</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                        </tr>
@@ -52,6 +53,11 @@
                                              <td class="sorting_1"><?php echo $stt ?></td>
                                              <td><?php echo $item['name'] ?></td>
                                              <td><?php echo $item['slug'] ?></td>
+                                             <td>
+                                                <a href="home.php?id=<?php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['home'] == 1 ? 'btn-info' : 'btn-light'?>">
+                                                   <?php echo $item['home'] == 1 ? 'Hiển thị' : 'Không'?>
+                                                </a>
+                                             </td>
                                              <td><?php echo $item['created_at'] ?></td>
                                              <td>
                                                 <a class="btn btn-xs btn-info" href="edit.php?id=<?php echo $item['id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
