@@ -1,6 +1,8 @@
 <?php 
    require_once __DIR__. "/autoload/autoload.php";
 
+   // unset($_SESSION['cart']);
+
    $sqlHomecate = "SELECT name, id FROM category WHERE home = 1 ORDER BY updated_at";
    $categoryHome = $db->fetchsql($sqlHomecate);
 
@@ -21,12 +23,12 @@
                             <img src="images/slide/sl3.jpg" class="img-thumbnail">
                         </section>
 
-                        <section class="box-main1">
+                        <section class="box-main1 clearfix">
 
                             <?php foreach ($data as $key => $value): ?>
                                 <h3 class="title-main"><a href=""> <?php echo $key ?> </a> </h3>
                             
-                                <div class="showitem">
+                                <div class="showitem clearfix">
                                     <?php foreach ($value as $item): ?>
                                         <div class="col-md-3 item-product bor">
                                             <a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>">
@@ -44,7 +46,7 @@
                                             <div class="hidenitem">
                                                 <p><a href=""><i class="fa fa-search"></i></a></p>
                                                 <p><a href=""><i class="fa fa-heart"></i></a></p>
-                                                <p><a href=""><i class="fa fa-shopping-basket"></i></a></p>
+                                                <p><a href="addcart.php?id=<?php echo $item['id'] ?>"><i class="fa fa-shopping-basket"></i></a></p>
                                             </div>
                                         </div>
                                     <?php endforeach ?>

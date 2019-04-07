@@ -97,6 +97,12 @@
                <span>Admin</span>
                </a>
             </li>
+            <li class="nav-item <?php echo isset($open) && $open == 'user' ? 'active' : '' ?>">
+               <a class="nav-link" href="<?php echo modules("user") ?>">
+               <i class="fas fa-user-cog"></i>
+               <span>User</span>
+               </a>
+            </li>
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-fw fa-folder"></i>

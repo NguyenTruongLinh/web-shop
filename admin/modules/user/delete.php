@@ -1,28 +1,28 @@
 <?php 
    
-   $open = "admin";
+   $open = "user";
 
    require_once __DIR__. "/../../autoload/autoload.php";
 
    $id = intval(getInput('id'));
 
-   $DeleteAdmin = $db->fetchID("admin", $id);
+   $DeleteUser = $db->fetchID("user", $id);
 
-   if (empty($DeleteAdmin)) {
+   if (empty($DeleteUser)) {
       $_SESSION['error'] = "Dữ liệu không tồn tại!";
-      redirectAdmin("admin");
+      redirectAdmin("user");
    }
 
    
-   $num = $db->delete("admin", $id);
+   $num = $db->delete("user", $id);
 
    if ($num > 0) {
       $_SESSION['success'] = "Xóa thành công!";
-      redirectAdmin("admin");
+      redirectAdmin("user");
    }
    else{
       $_SESSION['error'] = "Xóa thất bại!";
-      redirectAdmin("admin");
+      redirectAdmin("user");
    }
    
 ?>

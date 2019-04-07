@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 06, 2019 lúc 07:00 AM
+-- Thời gian đã tạo: Th4 07, 2019 lúc 05:34 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.3.3
+-- Phiên bản PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -72,9 +72,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `slug`, `images`, `banner`, `home`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Dell', 'dell', NULL, NULL, 1, 1, '2019-04-03 11:57:54', '2019-04-06 02:45:22'),
-(4, 'Macbook', NULL, NULL, NULL, 1, 1, '2019-04-03 12:29:42', '2019-04-06 02:50:04'),
-(9, 'Lenovo', 'lenovo', NULL, NULL, 0, 1, '2019-04-03 14:02:14', '2019-04-06 02:37:52');
+(1, 'dell update', 'dell-update', NULL, NULL, 1, 1, '2019-04-03 11:57:54', '2019-04-07 12:34:40'),
+(4, 'Macbook', NULL, NULL, NULL, 1, 1, '2019-04-03 12:29:42', '2019-04-07 12:34:49'),
+(9, 'Lenovo', 'lenovo', NULL, NULL, 1, 1, '2019-04-03 14:02:14', '2019-04-07 12:34:55');
 
 -- --------------------------------------------------------
 
@@ -104,12 +104,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `slug`, `price`, `sale`, `thumbnail`, `category_id`, `content`, `number`, `head`, `view`, `hot`, `created_at`, `updated_at`) VALUES
-(27, 'qeda2', 'qeda2', 4353, 10, '4a5ae4789f5e2532cb215ddb3c37666756a482d6016af9f45b932752247e6333-c1.jpg', 4, 'dw', 12, 0, 0, 0, '2019-04-04 17:06:27', '2019-04-06 03:10:47'),
+(27, 'qeda2', 'qeda2', 4353, 0, '4a5ae4789f5e2532cb215ddb3c37666756a482d6016af9f45b932752247e6333-c1.jpg', 4, 'dw', 12, 0, 0, 0, '2019-04-04 17:06:27', '2019-04-05 12:11:08'),
 (28, 'dw12', 'dw12', 34, 0, '6492bd77de3ebbe72c26421ee7c266beea36c5ce821fdaae903f4afc1b4e445b-c1.jpg', 1, 'aw', 2, 0, 0, 0, '2019-04-04 17:07:20', '2019-04-04 17:07:20'),
-(32, 'L141', 'l141', 234, 0, 'next.jpg', 9, 'daw', 12, 0, 0, 0, '2019-04-05 12:14:16', '2019-04-05 12:14:16'),
-(33, 'Dell 1', 'dell-1', 234314, 10, 'house.jpg', 1, 'ada', 21, 0, 0, 0, '2019-04-06 02:44:34', '2019-04-06 03:13:00'),
-(34, 'dell 2', 'dell-2', 14123, 0, 'avatar.png', 1, 'daw', 12, 0, 0, 0, '2019-04-06 02:44:52', '2019-04-06 02:44:52'),
-(35, 'dell 3', 'dell-3', 2343, 0, 'avatar.png', 1, 'wad', 12, 0, 0, 0, '2019-04-06 02:45:11', '2019-04-06 02:45:11');
+(32, 'L141', 'l141', 234, 0, 'next.jpg', 9, 'daw', 12, 0, 0, 0, '2019-04-05 12:14:16', '2019-04-05 12:14:16');
 
 -- --------------------------------------------------------
 
@@ -130,6 +127,13 @@ CREATE TABLE `user` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `phone`, `address`, `password`, `avatar`, `status`, `token`, `created_at`, `update_at`) VALUES
+(1, 'Nguyen Linh', 'nhokkuteo1996@gmail.com', '4243346702', 'Hcm', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, NULL, '2019-04-07 12:35:47', '2019-04-07 12:35:47');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -179,13 +183,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

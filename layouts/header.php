@@ -34,7 +34,7 @@
                                                 <a href=""><i class="fa fa-user"></i> <?php echo $_SESSION['name_user'] ?></a>
                                                 <ul id="header-submenu">
                                                     <li><a href="">Thông tin</a></li>
-                                                    <li><a href="">Giỏ hàng</a></li>
+                                                    <li><a href="<?php echo base_url() ?>gio-hang.php">Giỏ hàng</a></li>
                                                     <li><a href="thoat.php"><i class="fa fa-share-square-o"></i> Thoát</a></li>
                                                 </ul>
                                             </li>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-md-4">
                             <a href="">
-                                <img src="images/logo-default.png">
+                                <img src="<?php echo base_url() ?>public/frontend/images/logo-default.png">
                             </a>
                         </div>
                         <div class="col-md-3" id="header-right">
@@ -102,7 +102,7 @@
                 <div class="container">
                     <nav>
                         <div class="home pull-left">
-                            <a href="">Trang chủ</a>
+                            <a href="<?php echo base_url() ?>">Trang chủ</a>
                         </div>
                         <!--menu main-->
                         <ul id="menu-main">

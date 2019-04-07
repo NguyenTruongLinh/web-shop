@@ -162,7 +162,7 @@
     function formatPrice($number){
         $number = intval($number);
 
-        return $number = number_format($number,0,',','.');
+        return $number = number_format($number,0,',','.')." đ";
     }
 
     function formatPriceSale($number, $sale){
@@ -172,6 +172,18 @@
         $price = $number * (100 - $sale)/100;
 
         return formatPrice($price);
+    }
+
+    function sale($number){
+        if ($number < 5000000) {
+            return 0;
+        }
+        elseif ($number < 10000000) {
+            return 5;
+        }
+        else{
+            return 10;
+        }
     }
 
 

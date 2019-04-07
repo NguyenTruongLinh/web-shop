@@ -81,7 +81,7 @@ h1,h2,h3,h4,h5,h6
     position: absolute;
     border: 1px solid #e3e3e3;
     margin-left: -6px;
-    width: 80%;
+    width: 100%;
     z-index: 999999999;
     background: white;
 }

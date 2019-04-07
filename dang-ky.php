@@ -2,7 +2,7 @@
 	require_once __DIR__. "/autoload/autoload.php";
 
 	if (isset($_SESSION['name_id'])) {
-		echo "<script>alert('Bạn đã đăng nhập. Bạn không thể vào trang này!'); location.href='index.php'</script>";
+		echo "<script>alert('Bạn đã đăng nhập. Bạn không thể vào trang này!'); location.href='".base_url()."'</script>";
 	}
 
    	$data = 
