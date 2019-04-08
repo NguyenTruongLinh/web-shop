@@ -8,9 +8,9 @@
    $product = $db->fetchID("product", $id);
 
    //Lấy danh mục sản phẩm
-   $cateId = intval($product['category_id']);
+   $cateId = intval($product['id']);
 
-   $sql = "SELECT * FROM product WHERE category_id = $cateId ORDER BY id LIMIT 4";
+   $sql = "SELECT * FROM product WHERE id != $id ORDER BY ID LIMIT 4";
    $sanPhamKemTheo = $db->fetchsql($sql);
 
 ?>
@@ -44,9 +44,9 @@
                                     <!-- <li><p> Khuyến mãi nếu có mà éo có thì thôi </p></li> -->
 
                                     <?php if ($product['sale'] > 0): ?>
-                                    	<li><p><strike class="sale"><?php echo formatPrice($product['price']) ?> đ</strike> <b class="price"><?php echo formatPriceSale($product['price'], $product['sale']) ?> đ</b></p></li>
+                                    	<li><p><strike class="sale"><?php echo formatPrice($product['price']) ?></strike> <b class="price"><?php echo formatPriceSale($product['price'], $product['sale']) ?></b></p></li>
                                     <?php else : ?>
-                                    	<li><p><b><?php echo formatPrice($product['price']) ?> đ</b></p></li>
+                                    	<li><p><b><?php echo formatPrice($product['price']) ?></b></p></li>
                                     <?php endif ?>
 
 
@@ -97,9 +97,9 @@
                                             <div class="info-item">
                                                 <a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a>
                                                 <?php if ($item['sale'] > 0): ?>
-                                                    <p><strike class="sale"><?php echo formatPrice($item['price']) ?> đ</strike> <b class="price"><?php echo formatPriceSale($item['price'], $item['sale']) ?> đ</b></p>
+                                                    <p><strike class="sale"><?php echo formatPrice($item['price']) ?></strike> <b class="price"><?php echo formatPriceSale($item['price'], $item['sale']) ?></b></p>
                                                 <?php else : ?>
-                                                    <p><b><?php echo formatPrice($item['price']) ?> đ</b></p>
+                                                    <p><b><?php echo formatPrice($item['price']) ?></b></p>
                                                 <?php endif ?>
                                                 
                                             </div>
