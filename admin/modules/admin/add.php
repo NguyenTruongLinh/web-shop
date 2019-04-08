@@ -141,7 +141,7 @@
 			         <div class="form-group">
 			            <label for="exampleInputEmail1">Level</label>
 			            <select class="form-control" id="exampleFormControlSelect1" name="level">
-					      	<option value="1" <?php echo isset($data['level']) &&  $data['level'] == 2 ? "selected = 'selected'" : '' ?>>Admin</option>
+					      	<option value="1" <?php echo isset($data['level']) &&  $data['level'] == 1 ? "selected = 'selected'" : '' ?>>Admin</option>
 					      	<option value="2" <?php echo isset($data['level']) &&  $data['level'] == 2 ? "selected = 'selected'" : '' ?>>CTV</option>
 					    </select>
 			         </div>

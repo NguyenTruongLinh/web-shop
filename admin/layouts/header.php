@@ -1,3 +1,17 @@
+<?php  
+
+   require_once __DIR__. "/../../libraries/Database.php";
+   require_once __DIR__. "/../../libraries/Function.php";
+   
+   $db = new Database ;
+
+   $id = intval(getInput('id'));
+
+   $sql = "SELECT * FROM admin WHERE id = '".$_SESSION['admin_id']."'";
+   $adminActice = $db->fetchsql($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -6,7 +20,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
       <meta name="author" content="">
-      <title>SB Admin - Dashboard</title>
+      <title>Admin</title>
       <!-- Custom fonts for this template-->
       <link href="<?php echo base_url() ?>public/admin/css/all.min.css" rel="stylesheet" type="text/css">
       <!-- Page level plugin CSS-->
@@ -16,7 +30,7 @@
    </head>
    <body id="page-top">
       <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-         <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+         <a class="navbar-brand mr-1" href="#">Xin chào <?php echo $_SESSION['admin_name'] ?></a>
          <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
          <i class="fas fa-bars"></i>
          </button>
@@ -65,7 +79,7 @@
                   <a class="dropdown-item" href="#">Settings</a>
                   <a class="dropdown-item" href="#">Activity Log</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">Logout</a>
                </div>
             </li>
          </ul>
@@ -91,49 +105,27 @@
                <span>Sản phẩm</span>
                </a>
             </li>
-            <li class="nav-item <?php echo isset($open) && $open == 'admin' ? 'active' : '' ?>">
-               <a class="nav-link" href="<?php echo modules("admin") ?>">
-               <i class="fas fa-user-cog"></i>
-               <span>Admin</span>
-               </a>
-            </li>
+            <?php foreach ($adminActice as $item): ?>
+               <?php if ($item['level'] == 1): ?>
+                  <li class="nav-item <?php echo isset($open) && $open == 'admin' ? 'active' : '' ?>">
+                     <a class="nav-link" href="<?php echo modules("admin") ?>">
+                     <i class="fas fa-user-cog"></i>
+                     <span>Admin</span>
+                     </a>
+                  </li>
+               <?php endif ?>
+            <?php endforeach ?>
             <li class="nav-item <?php echo isset($open) && $open == 'user' ? 'active' : '' ?>">
                <a class="nav-link" href="<?php echo modules("user") ?>">
-               <i class="fas fa-user-cog"></i>
+               <i class="fas fa-users"></i>
                <span>User</span>
                </a>
             </li>
             <li class="nav-item <?php echo isset($open) && $open == 'transaction' ? 'active' : '' ?>">
                <a class="nav-link" href="<?php echo modules("transaction") ?>">
-               <i class="fas fa-user-cog"></i>
+               <i class="fas fa-cart-plus"></i>
                <span>Quản lý đơn hàng</span>
                </a>
-            </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="fas fa-fw fa-folder"></i>
-               <span>Pages</span>
-               </a>
-               <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                  <h6 class="dropdown-header">Login Screens:</h6>
-                  <a class="dropdown-item" href="login.html">Login</a>
-                  <a class="dropdown-item" href="register.html">Register</a>
-                  <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                  <div class="dropdown-divider"></div>
-                  <h6 class="dropdown-header">Other Pages:</h6>
-                  <a class="dropdown-item" href="404.html">404 Page</a>
-                  <a class="dropdown-item" href="blank.html">Blank Page</a>
-               </div>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="charts.html">
-               <i class="fas fa-fw fa-chart-area"></i>
-               <span>Charts</span></a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="tables.html">
-               <i class="fas fa-fw fa-table"></i>
-               <span>Tables</span></a>
             </li>
          </ul>
          <div id="content-wrapper">

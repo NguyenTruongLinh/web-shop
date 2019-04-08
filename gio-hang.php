@@ -9,7 +9,7 @@
 
 <?php require_once __DIR__. "/layouts/header.php"; ?>
                     <div class="col-md-9">
-
+                    	<?php require_once __DIR__. "/partials/notification.php"; ?>
                         <section class="box-main1">
                             <h3 class="title-main"><a href=""> Giỏ hàng của bạn </a> </h3>
 
@@ -25,7 +25,7 @@
 										<th scope="col">Thao tác</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="tbody">
 									<?php $stt=1; foreach ($_SESSION['cart'] as $key => $value): ?>
 											<tr>
 												<td><?php echo $stt ?></td>
@@ -34,13 +34,13 @@
 													<img src="<?php echo uploads() ?>product/<?php echo $value['thumbnail'] ?>" alt="" width="80px">
 												</td>
 												<td width="90px">
-													<input type="number" class="form-control" value="<?php echo $value['qty'] ?>" min="0">
+													<input type="number" class="form-control qty" value="<?php echo $value['qty'] ?>" min="0" id="qty">
 												</td>
 												<td><?php echo formatPrice($value['price']) ?></td>
 												<td><?php echo formatPrice($value['price'] * $value['qty']) ?></td>
 												<td>
-													<a href="" class="btn btn-danger">Xóa</a>
-													<a href="" class="btn btn-info">Cập nhật</a>
+													<a href="remove-cart.php?key=<?php echo $key ?>" class="btn btn-danger">Xóa</a>
+													<a href="#" class="btn btn-info updatecart" data-key=<?php echo $key ?>>Cập nhật</a>
 												</td>
 											</tr>
 											<?php $sum += $value['price'] * $value['qty']; $_SESSION['tongtien'] = $sum; ?>										

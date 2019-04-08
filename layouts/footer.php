@@ -137,4 +137,25 @@
             $hidenitem.hide(500);
         })
     })
+
+    $(function(){
+        $updatecart = $(".updatecart");
+        $updatecart.click(function(e){
+            e.preventDefault();
+            $qty = $(this).parents("tr").find(".qty").val();
+
+            $key = $(this).attr("data-key");
+            $.ajax({
+                url: 'update-cart.php',
+                type: 'GET',
+                data: {'qty':$qty, 'key':$key},
+                success:function(data){
+                    if (data == 1) {
+                        alert('Cập nhật giỏ hàng thành công!');
+                        location.href = 'gio-hang.php';
+                    }
+                }
+            });
+        })
+    })
 </script>

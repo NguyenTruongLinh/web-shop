@@ -4,9 +4,18 @@
 
    require_once __DIR__. "/../../autoload/autoload.php";
 
-   
+   //Check xem có phải là admin hay không.
+   $sql = "SELECT * FROM admin WHERE id = '".$_SESSION['admin_id']."'";
 
-   // $product = $db->fetch_join("product");
+   $level = $db->fetchsql($sql);
+
+   //Nếu không phải là Admin thì thông báo ko có quyền truy cập
+   foreach ($level as $item) {
+      if ($item['level'] == 2) {
+         echo "<script>alert('Bạn không có quyền vào đây!'); location.href='".base_url()."admin/'</script>";
+      }
+   }
+
    $admin = $db->fetchAll("admin");
 ?>
 

@@ -6,6 +6,10 @@
    	
    	$db = new Database ;
 
+   	if (!isset($_SESSION['admin_id'])) {
+   		header("location: /web-shop/login/");
+   	}
+
 
    	define("ROOT", $_SERVER['DOCUMENT_ROOT'] ."/web-shop/public/uploads/");
 ?>
