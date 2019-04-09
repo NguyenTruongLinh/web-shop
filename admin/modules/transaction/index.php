@@ -4,7 +4,9 @@
 
    require_once __DIR__. "/../../autoload/autoload.php";
 
-   
+   $sqlLevel = "SELECT * FROM admin WHERE id = '".$_SESSION['admin_id']."'";
+
+   $level = $db->fetchsql($sqlLevel);
 
    // $product = $db->fetch_join("product");
    $sql = "SELECT transaction.* , user.name AS nameuser, user.phone AS phoneuser FROM transaction LEFT JOIN user ON user.id = transaction.user_id ORDER BY ID DESC";
@@ -47,7 +49,11 @@
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Họ tên</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Số điện thoại</th>
                                           <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Trạng thái</th>
-                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
+                                          <?php foreach ($level as $item): ?>
+                                             <?php if ($item['level'] == 1): ?>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
+                                             <?php endif ?>
+                                          <?php endforeach ?>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -59,9 +65,13 @@
                                              <td>
                                              	<a href="status.php?id=<?php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['status'] == 0 ? 'btn-danger' : 'btn-info' ?>"><?php echo $item['status'] == 0 ? 'Chưa xử lý' : 'Đã xử lý' ?></a>
                                              </td>
-                                             <td>
-                                                <a class="btn btn-xs btn-danger" href="delete.php?id=<?php echo $item['id'] ?>"><i class="fa fa-times"></i> Xóa</a>
-                                             </td>
+                                             <?php foreach ($level as $item): ?>
+                                                <?php if ($item['level'] == 1): ?>
+                                                   <td>
+                                                      <a class="btn btn-xs btn-danger" href="delete.php?id=<?php echo $item['id'] ?>"><i class="fa fa-times"></i> Xóa</a>
+                                                   </td>
+                                                <?php endif ?>
+                                             <?php endforeach ?>
                                           </tr>
                                        <?php $stt++; endforeach ?>
                                        

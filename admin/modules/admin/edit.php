@@ -35,17 +35,17 @@
       if (postInput('name') == '') {
          $error['name'] = "Vui lòng nhập đầy đủ họ tên!";
       }
-      else{
-      	if (postInput("email") != $EditAdmin['email']) {
-      		$is_check = $db->fetchOne("admin", " email = '".$data['email']."'");
-	      	if ($is_check != NULL) {
-	      		$error['email'] = "Email đã tồn tại!";
-	      	}
-      	}
+      
+      if (postInput('email') == '') {
+         $error['email'] = "Vui lòng nhập đầy đủ họ tên!";
       }
-
-      if (postInput('name') == '') {
-         $error['name'] = "Vui lòng nhập đầy đủ họ tên!";
+      else{
+         if (postInput("email") != $EditAdmin['email']) {
+            $is_check = $db->fetchOne("admin", " email = '".$data['email']."'");
+            if ($is_check != NULL) {
+               $error['email'] = "Email đã tồn tại!";
+            }
+         }
       }
 
       if (postInput('phone') == '') {

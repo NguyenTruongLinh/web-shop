@@ -4,6 +4,10 @@
 
    require_once __DIR__. "/../../autoload/autoload.php";
 
+   $sql = "SELECT * FROM admin WHERE id = '".$_SESSION['admin_id']."'";
+
+   $level = $db->fetchsql($sql);
+
    $category = $db->fetchAll("category");
 ?>
 
@@ -61,7 +65,12 @@
                                              <td><?php echo $item['created_at'] ?></td>
                                              <td>
                                                 <a class="btn btn-xs btn-info" href="edit.php?id=<?php echo $item['id'] ?>"><i class="fa fa-edit"></i> Sửa</a>
-                                                <a class="btn btn-xs btn-danger" href="delete.php?id=<?php echo $item['id'] ?>"><i class="fa fa-times"></i> Xóa</a>
+                                                <?php foreach ($level as $item): ?>
+                                                   <?php if ($item['level'] == 1): ?>
+                                                      <a class="btn btn-xs btn-danger" href="delete.php?id=<?php echo $item['id'] ?>"><i class="fa fa-times"></i> Xóa</a>
+                                                   <?php endif ?>
+                                                <?php endforeach ?>
+                                                
                                              </td>
                                           </tr>
                                        <?php $stt++; endforeach ?>
